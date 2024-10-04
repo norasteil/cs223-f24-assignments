@@ -13,7 +13,6 @@ int main()
   struct ppm_pixel *pixels = read_ppm("feep-raw.ppm", &w, &h);
 
   // todo: print out the grid of pixels
-  // write a short test that calls your function and prints the contents of feep-raw.ppm
   printf("Testing file feep-raw.ppm: %d %d\n", w, h);
   for (int i = 0; i < h; i++)
   {

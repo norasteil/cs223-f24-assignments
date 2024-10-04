@@ -1,7 +1,7 @@
 /*----------------------------------------------
- * Author:
- * Date:
- * Description
+ * Author: Nora Steil
+ * Date: 10/4/24
+ * Description: Write a binary file
  ---------------------------------------------*/
 #include "write_ppm.h"
 #include <stdio.h>
@@ -11,6 +11,14 @@
 
 void write_ppm(const char *filename, struct ppm_pixel *pixels, int w, int h)
 {
+    FILE *fp = fopen(filename, "wb");
+
+    // write header
+    fprintf(fp, "P6\n%d %d\n255\n", w, h);
+
+    // write binary
+    fwrite(pixels, sizeof(struct ppm_pixel), w * h, fp);
+    fclose(fp);
 }
 
 void write_ppm_2d(const char *filename, struct ppm_pixel **pixels, int w, int h)
