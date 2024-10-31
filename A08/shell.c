@@ -1,3 +1,9 @@
+/*----------------------------------------------
+ * Author: Nora Steil
+ * Date: 10/31/24
+ * Description: Creates a custom shell that uses fork to spawn processes
+ ---------------------------------------------*/
+
 #include <stdio.h>
 #include <sys/types.h>
 #include <unistd.h>
