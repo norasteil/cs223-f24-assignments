@@ -16,46 +16,32 @@
 #define ANSI_COLOR_CYAN "\x1b[36m"
 #define ANSI_COLOR_RESET "\x1b[0m"
 
-void display_prompt()
-{
-  char cwd[1024];
-  char hostname[1024];
-  struct passwd *pw = getpwuid(geteuid());
-
-  getcwd(cwd, sizeof(cwd));
-  gethostname(hostname, sizeof(hostname));
-
-  printf(ANSI_COLOR_GREEN "%s@%s:" ANSI_COLOR_BLUE "%s" ANSI_COLOR_RESET "$ ", pw->pw_name, hostname, cwd);
-}
-
 int main()
 {
-  // print a prompt that shows working directory, look distinct from lab machine prompts
-  // use readline() to get user input
-  // use add_history() to save user history
-  // quit if user types exit
-
+  printf(ANSI_COLOR_MAGENTA "Welcome to Nora's custom shell\n" ANSI_COLOR_RESET);
   char *input;
   while (1)
   {
-    display_prompt();
+    char cwd[1024];
+    char hostname[1024];
+    struct passwd *pw = getpwuid(geteuid());
+
+    getcwd(cwd, sizeof(cwd));
+    gethostname(hostname, sizeof(hostname));
+
+    printf(ANSI_COLOR_GREEN "%s@%s:" ANSI_COLOR_BLUE "%s" ANSI_COLOR_RESET "$ ", pw->pw_name, hostname, cwd);
 
     input = readline("");
 
-    if (input == NULL)
+    if (input == NULL || strcmp(input, "exit") == 0)
     {
+      free(input);
       break;
     }
 
     if (*input)
     {
       add_history(input);
-    }
-
-    if (strcmp(input, "exit") == 0)
-    {
-      free(input);
-      break;
     }
 
     char *args[128];
@@ -71,15 +57,17 @@ int main()
     pid_t pid = fork();
     if (pid == 0)
     {
-      if (execvp(args[0], args) == -1)
+      int ret = execvp(args[0], args);
+      if (ret < 0)
       {
-        perror("Error executing command");
+        printf(ANSI_COLOR_YELLOW "%s:" ANSI_COLOR_RED " command not found\n" ANSI_COLOR_RESET, args[0]);
       }
-      exit(1);
+      free(input);
+      exit(0);
     }
     else if (pid < 0)
     {
-      perror("Fork failed");
+      perror(ANSI_COLOR_RED "Fork failed" ANSI_COLOR_RESET);
     }
     else
     {
