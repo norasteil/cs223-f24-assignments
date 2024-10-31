@@ -2,6 +2,9 @@
  * Author: Nora Steil
  * Date: 10/31/24
  * Description: Creates a custom shell that uses fork to spawn processes
+ * NOTE: I had trouble with readline on my mac, so I ran shell.c like this:
+ * gcc -g -Wall -Wvla -Werror -Wno-unused-variable -Wno-unused-but-set-variable shell.c read_ppm.c write_ppm.c -o shell -I/opt/homebrew/opt/readline/include -L/opt/homebrew/opt/readline/lib -lreadline
+ * ./shell
  ---------------------------------------------*/
 
 #include <stdio.h>
