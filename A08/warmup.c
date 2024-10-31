@@ -1,5 +1,38 @@
 #include <stdio.h>
+#include <sys/types.h>
+#include <unistd.h>
 
-int main() {
+int main()
+{
+  pid_t pid;
+
+  printf("%d A0\n", getpid());
+  fflush(stdout);
+  pid = fork();
+
+  if (pid) // B0
+  {
+    printf("%d B0\n", getpid());
+    fflush(stdout);
+    pid = fork();
+
+    if (pid) // C0
+    {
+      printf("%d C0\n", getpid());
+      fflush(stdout);
+    }
+    else // child of C0
+    {
+      printf("%d C1\n", getpid());
+      fflush(stdout);
+    }
+  }
+  else // child of B0
+  {
+    printf("%d B1\n", getpid());
+    fflush(stdout);
+  }
+
+  printf("%d Bye\n", getpid());
   return 0;
 }
