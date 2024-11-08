@@ -1,3 +1,8 @@
+/*----------------------------------------------
+ * Author: Nora Steil
+ * Date: 11/8/24
+ * Description: Outputs a ppm image of a mandelbrot set using threads
+ ---------------------------------------------*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -105,7 +110,7 @@ void *thread_generate(void *args)
 
 int main(int argc, char *argv[])
 {
-  int size = 480;
+  int size = 2000;
   float xmin = -2.0;
   float xmax = 0.47;
   float ymin = -1.12;

@@ -1,3 +1,8 @@
+/*----------------------------------------------
+ * Author: Nora Steil
+ * Date: 11/8/24
+ * Description: Reads a binary file
+ ---------------------------------------------*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
