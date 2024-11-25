@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*----------------------------------------------
  * Author: Nora Steil
  * Date: 10/31/24
@@ -85,5 +86,10 @@ int main()
 
     free(input);
   }
+=======
+#include <stdio.h>
+
+int main() {
+>>>>>>> 10a29efbef8d02b40bfa4fd18d9fa5137311fd5b
   return 0;
 }
