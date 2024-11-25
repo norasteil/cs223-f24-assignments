@@ -31,7 +31,7 @@ struct ppm_pixel *read_ppm(const char *filename, int *w, int *h)
   // skip the whitespace character
   fgetc(fp);
 
-  // allocate space for the 2d array, retun null if can't allocate
+  // allocate space for the 2d array, return null if can't allocate
   struct ppm_pixel *pixels = malloc((*w) * (*h) * sizeof(struct ppm_pixel));
   if (pixels == NULL)
   {
