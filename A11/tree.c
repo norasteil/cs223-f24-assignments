@@ -1,3 +1,8 @@
+/*----------------------------------------------
+ * Author: Nora Steil
+ * Date: 11/25/24
+ * Description: Implements a binary search tree
+ ---------------------------------------------*/
 #include "tree.h"
 #include "stdio.h"
 #include "stdlib.h"

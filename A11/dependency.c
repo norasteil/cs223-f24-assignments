@@ -1,3 +1,8 @@
+/*----------------------------------------------
+ * Author: Nora Steil
+ * Date: 11/25/24
+ * Description: Builds a binary search tree of a given set of files using N threads
+ ---------------------------------------------*/
 #include <stdio.h>
 #include "tree.h"
 #include <stdlib.h>
