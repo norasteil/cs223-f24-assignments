@@ -1,3 +1,8 @@
+/*----------------------------------------------
+ * Author: Nora Steil
+ * Date: 12/5/24
+ * Description: Implements malloc/free with a free list and using the first fit strategy
+ ---------------------------------------------*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
